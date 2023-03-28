@@ -1,0 +1,64 @@
+   tr{
+        display: block;        
+    }
+
+    .row1, .row2{border-bottom: 4px solid #D3D3D3;}
+    .one, .four, .seven {border-right: 4px solid #D3D3D3;}
+    .three, .six, .nine {border-left: 4px solid #D3D3D3;}
+
+
+    .one,.two, .three, .four, .five, .six, .seven, .eight, .nine {
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        font-size:80px;
+        font-weight: 100px;
+            }   
+
+
+.main_div{
+text-align: center;
+margin-top: 150px;
+margin-bottom: 150px;
+}
+
+.winner_green{
+    background-color:  #E4F9F5;
+}
+
+.score{
+    margin-bottom: 40px;
+    display: block;
+}
+
+.player_x, .player_o{
+    display: inline-block;
+    background-color: aqua;
+    border-radius: 30%;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 1.5em;
+}
+
+.player_xs, .player_os {
+    margin-left: 10px;
+}
+
+.main_table{
+    margin-left: auto;
+  margin-right: auto;
+}
+
+body{
+
+    /* background-color: gainsboro; */
+    background-color:  #14bdac;
+}
+
+.restart{
+    margin-top: 40px;
+    border-radius: 30%;
+    background-color:  aqua;
+}
