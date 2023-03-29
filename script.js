@@ -14,8 +14,10 @@ let x="", y="", z="";
 function playtoggle(){
    if (player_x.play){
         player_x.play = false
-        player_o.play =true}
+        player_o.play =true
+        turn = player_o.card}
    else {
+        turn = player_x.card
         player_x.play = true
         player_o.play =false}
 }
@@ -48,11 +50,9 @@ function checkdraw(){
 
 
 function restart(event){
-    cells = document.querySelectorAll(".cell")
-
-    for(i=0; i<cells.length; i++)
+      for(i=0; i<cells.length; i++)
     {
-        cells[i].textContent=""
+        cells[i].textContent=undefined;
     }
     cells_obj ={}
     cells_obj.play = true
@@ -60,11 +60,16 @@ function restart(event){
     player_x.play = true
 }
 
+
+
 function play_xo(event){
 
         // check playing,toggle, assign card to div 
         let card = player_x.play ? player_x.card : player_o.card;
-        let current_player = player_x.play ? player_x : player_o
+        let current_player = player_x.play ? player_x : player_o;
+       
+
+        
 
         if (this.textContent==="" && cells_obj.play){
             this.textContent= card;
@@ -119,6 +124,10 @@ function play_xo(event){
             console.log("draw")
             player_x.play = false
        }
+
+      
+       document.querySelector(".turn").textContent = `${turn}'s turn`
+       localStorage.setItem('turn', turn)
 }
 
 
@@ -129,7 +138,9 @@ function play_xo(event){
 if (!localStorage.getItem('x') || !localStorage.getItem('x')){
     localStorage.setItem('x', 0)
     localStorage.setItem('o', 0)
+    
 }
+
 let score_x = localStorage.getItem('x')
 let score_o = localStorage.getItem('o')
 

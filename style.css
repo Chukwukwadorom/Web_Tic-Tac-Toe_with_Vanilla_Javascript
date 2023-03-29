@@ -51,8 +51,11 @@ margin-bottom: 150px;
   margin-right: auto;
 }
 
-body{
+.turn {
+    display: inline-block;
+}
 
+body{
     /* background-color: gainsboro; */
     background-color:  #14bdac;
 }
