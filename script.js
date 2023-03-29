@@ -6,7 +6,7 @@ let cells = document.querySelectorAll(".cell")
 let cells_obj = {play:true}
 let player_x = {play:true, card:"x"}
 let player_o = {play:false, card: "o"}
-let x="", y="", z=""; 
+let x= y=z= ""; 
 
 
 
@@ -58,6 +58,7 @@ function restart(event){
     cells_obj.play = true
     toggle_win_color(x,y,z)
     player_x.play = true
+    x=y=z= undefined;
 }
 
 
@@ -133,7 +134,7 @@ function play_xo(event){
 
 
 
-
+localStorage.clear()
 
 if (!localStorage.getItem('x') || !localStorage.getItem('x')){
     localStorage.setItem('x', 0)
