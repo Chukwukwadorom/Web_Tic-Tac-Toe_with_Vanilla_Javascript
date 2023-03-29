@@ -9,6 +9,8 @@ let player_o = {play:false, card: "o"}
 let x="", y="", z=""; 
 
 
+
+
 function playtoggle(){
    if (player_x.play){
         player_x.play = false
@@ -26,12 +28,7 @@ function toggle_win_color(x,y,z){
 
 function announcewin(x,y,z, current_player){
     toggle_win_color(x,y,z)
-    cells_obj.play = false
-    if (!localStorage.getItem(current_player.card))
-    {
-        localStorage.setItem(current_player.card, 0)
-    }
- 
+    cells_obj.play = false 
     let score  = localStorage.getItem(current_player.card)
 
     score++;
@@ -127,11 +124,24 @@ function play_xo(event){
 
 
 
+
+
+if (!localStorage.getItem('x') || !localStorage.getItem('x')){
+    localStorage.setItem('x', 0)
+    localStorage.setItem('o', 0)
+}
+let score_x = localStorage.getItem('x')
+let score_o = localStorage.getItem('o')
+
+document.querySelector(".player_xs").textContent = score_x
+document.querySelector(".player_os").textContent = score_o
+
+
+
 for(let x = 0; x <len; x++){
     
     cells[x].addEventListener("click", play_xo)
 } 
-
 
 document.querySelector(".restart").addEventListener("click", restart)
 
