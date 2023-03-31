@@ -1,12 +1,13 @@
 let len = document.querySelectorAll(".cell").length
 let cells = document.querySelectorAll(".cell")
+let winner_div = document.querySelector(".result_marker")
 
 
 
 let cells_obj = {play:true}
 let player_x = {play:true, card:"x"}
 let player_o = {play:false, card: "o"}
-let x= y=z= ""; 
+let x = y = z = undefined; 
 
 
 
@@ -23,9 +24,10 @@ function playtoggle(){
 }
 
 function toggle_win_color(x,y,z){
+    if (x!==undefined && y!==undefined && z !== undefined){
     document.querySelector(`.${x}`).classList.toggle("winner_green")
     document.querySelector(`.${y}`).classList.toggle("winner_green")
-    document.querySelector(`.${z}`).classList.toggle("winner_green")
+    document.querySelector(`.${z}`).classList.toggle("winner_green")}
 }
 
 function announcewin(x,y,z, current_player){
@@ -36,7 +38,8 @@ function announcewin(x,y,z, current_player){
     score++;
     document.querySelector(`.player_${current_player.card}s`).textContent = score
     localStorage.setItem(current_player.card, score)
-         
+    winner_div.classList.add("result")
+    winner_div.textContent = `${current_player.card} wins!`       
 
 }
 
@@ -57,7 +60,19 @@ function restart(event){
     cells_obj ={}
     cells_obj.play = true
     toggle_win_color(x,y,z)
-    player_x.play = true
+
+    let turn = localStorage.getItem("turn")
+    
+    if(turn ==='x')
+        player_x.play = true
+    else if(turn ==='o')
+        player_o.play = true
+    else
+        player_x.play= true
+
+    winner_div.classList.remove("result")
+    
+    winner_div.textContent = undefined;
     x=y=z= undefined;
 }
 
@@ -123,7 +138,9 @@ function play_xo(event){
         //checking for a draw 
        if (checkdraw()){
             console.log("draw")
-            player_x.play = false
+            winner_div.textContent ="Draw!"
+            winner_div.classList.add("result")
+            current_player.play = false
        }
 
       
