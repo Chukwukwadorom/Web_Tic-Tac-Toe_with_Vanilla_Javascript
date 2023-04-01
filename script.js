@@ -1,6 +1,7 @@
 let len = document.querySelectorAll(".cell").length
 let cells = document.querySelectorAll(".cell")
 let winner_div = document.querySelector(".result_marker")
+let result_div = document.querySelector(".result_div")
 
 
 
@@ -39,6 +40,7 @@ function announcewin(x,y,z, current_player){
     document.querySelector(`.player_${current_player.card}s`).textContent = score
     localStorage.setItem(current_player.card, score)
     winner_div.classList.add("result")
+    result_div.classList.add("result_opacity")
     winner_div.textContent = `${current_player.card} wins!`       
 
 }
@@ -71,6 +73,7 @@ function restart(event){
         player_x.play= true
 
     winner_div.classList.remove("result")
+    result_div.classList.remove("result_opacity")
     
     winner_div.textContent = undefined;
     x=y=z= undefined;
@@ -98,48 +101,49 @@ function play_xo(event){
         if (cells_obj.one!== undefined && cells_obj.one === cells_obj.five  && 
             cells_obj.five === cells_obj.nine && cells_obj.play) { 
                         [x, y, z] = ["one","five","nine"]
-                        announcewin(x,y,z, current_player)}
+                        announcewin(x,y,z, current_player); return;}
             
         else if  (cells_obj.seven!== undefined && cells_obj.seven === cells_obj.five  && 
             cells_obj.five === cells_obj.three && cells_obj.play) {
                 [x, y, z] = ["seven","five","three"]
-            announcewin(x,y,z, current_player)}
+            announcewin(x,y,z, current_player); return;}
 
         else if  (cells_obj.one!== undefined && cells_obj.one === cells_obj.four  && 
             cells_obj.four === cells_obj.seven && cells_obj.play) {
                 [x, y, z] = ["one","four","seven"]
-                announcewin(x,y,z, current_player)}
+                announcewin(x,y,z, current_player); return;}
 
         else if  (cells_obj.two!== undefined && cells_obj.two === cells_obj.five  && 
             cells_obj.five === cells_obj.eight && cells_obj.play) {
                 [x,y,z] = ["two","five","eight"]
-            announcewin(x,y,z, current_player)}
+            announcewin(x,y,z, current_player); return;}
 
         else if  (cells_obj.three!== undefined && cells_obj.three === cells_obj.six  && 
             cells_obj.six === cells_obj.nine && cells_obj.play) {
                 [x,y,z] = ["three","six","nine"]
-            announcewin(x,y,z, current_player)}
+            announcewin(x,y,z, current_player); return;}
 
         else if  (cells_obj.one!== undefined && cells_obj.one === cells_obj.two  && 
             cells_obj.two === cells_obj.three && cells_obj.play){
                 [x,y,z] = ["one","two","three"]
-            announcewin(x,y,z, current_player)}
+            announcewin(x,y,z, current_player);return;}
 
         else if  (cells_obj.four!== undefined && cells_obj.four === cells_obj.five  && 
             cells_obj.five === cells_obj.six && cells_obj.play){
                 [x,y,z] = ["four","five","six"]
-            announcewin(x,y,z, current_player)}
+            announcewin(x,y,z, current_player); return;}
 
         else if  (cells_obj.seven!== undefined && cells_obj.seven === cells_obj.eight  && 
             cells_obj.eight === cells_obj.nine && cells_obj.play){
                 [x,y,z] = ["seven","eight","nine"]
-            announcewin(x,y,z, current_player)}
+            announcewin(x,y,z, current_player);return;}
 
         //checking for a draw 
        if (checkdraw()){
             console.log("draw")
             winner_div.textContent ="Draw!"
             winner_div.classList.add("result")
+            result_div.classList.add("result_opacity")
             current_player.play = false
        }
 
